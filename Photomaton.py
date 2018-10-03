@@ -17,12 +17,13 @@ def photoButtonPress(event):
     if GPIO.input(photobuttonPin) != GPIO.LOW:
         print("fake button press")
         return
-
+    camera.start_preview()
+    sleep(3)
     print("trying to take picture")
     time_stamp = strftime("%Y_%m_%dT%H_%M_%S", gmtime())
     path = "/home/pi/Desktop/photobooth_photos/%s.jpg" % time_stamp
     # camera.hflip = False
-    camera.stop_preview()
+    
     outputToggle(ledPin, True, time=1)
     for j in range(4):
         outputToggle(ledPin, False, time=0.125)
@@ -32,7 +33,8 @@ def photoButtonPress(event):
     outputToggle(ledPin, False)
     # shutter_sound.play()
     # camera.hflip = True
-    camera.start_preview()
+    
+    camera.stop_preview()
     print("picture taken")
 
 def safeClose():
@@ -74,7 +76,7 @@ camera.brightness = 57
 
 camera.hflip = False
 camera.vflip = True
-camera.start_preview()
+
 
 # Turn off mouse
 pygame.mouse.set_visible(False)

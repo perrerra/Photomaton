@@ -24,9 +24,9 @@ def photoButtonPress(event):
     # camera.hflip = False
 
     outputToggle(ledPin, True, time=1)
-    for j in range(4):
-        outputToggle(ledPin, False, time=0.125)
-        outputToggle(ledPin, True, time=0.125)
+    for j in range(8):
+        outputToggle(ledPin, False, time=0.0625)
+        outputToggle(ledPin, True, time=0.0625)
     
     camera.capture(path)
     outputToggle(ledPin, False)
@@ -47,7 +47,7 @@ def safeClose():
     --------
     None
     """
-    # outputToggle(ledPin, False)
+    outputToggle(ledPin, False)
     # outputToggle(auxlightPin, False)
     camera.stop_preview()
     camera.close()

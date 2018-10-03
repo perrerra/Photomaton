@@ -140,6 +140,11 @@ def outputToggle(pin, status, time=False):
     return status
 
 def startPreview():    
+    camera = picamera.PiCamera()
+    camera = picamera.PiCamera()
+    camera.resolution = (1280,720)  # 1280,720 also works for some setups 2592, 1944
+    camera.framerate = 8  # slower is necessary for high-resolution
+    camera.brightness = previewBrightness  # Turned up so the black isn't too dark
     camera.hflip = True
     camera.vflip = True
     camera.start_preview()
@@ -200,10 +205,7 @@ smfont = pygame.font.Font(None, 600)
 tinyfont = pygame.font.Font(None, 300)
 
 # Setup camera
-camera = picamera.PiCamera()
-camera.resolution = (1280,720)  # 1280,720 also works for some setups 2592, 1944
-camera.framerate = 8  # slower is necessary for high-resolution
-camera.brightness = previewBrightness  # Turned up so the black isn't too dark
+
 
 startPreview()
 

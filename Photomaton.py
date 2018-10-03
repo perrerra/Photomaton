@@ -6,6 +6,7 @@ import RPi.GPIO as GPIO
 from time import sleep, strftime, gmtime
 import os
 
+camera = None
 
 # Setup Parameters
 # Only change things here unless you want to dig into the program

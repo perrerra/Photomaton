@@ -1,4 +1,4 @@
-#import sys
+import sys
 import pygame
 import picamera
 import RPi.GPIO as GPIO
@@ -10,14 +10,13 @@ def photoButtonPress(event):
     if GPIO.input(photobuttonPin) != GPIO.LOW:
         return
 
+    print("trying to take picture")
     time_stamp = strftime("%Y_%m_%dT%H_%M_%S", gmtime())
     path = "/home/pi/Desktop/photobooth_photos/%s.jpg" % time_stamp
     camera.hflip = False
     camera.capture(path)
     camera.hflip = True
-
-
-
+    print("picture taken")
 
 def safeClose():
     """
@@ -32,14 +31,14 @@ def safeClose():
     --------
     None
     """
-    outputToggle(ledPin, False)
-    outputToggle(auxlightPin, False)
+    # outputToggle(ledPin, False)
+    # outputToggle(auxlightPin, False)
     camera.stop_preview()
     camera.close()
     GPIO.cleanup()
 
 pygame.init()
-#pygame.mixer.init()
+pygame.mixer.init()
 
 # Pin configuration
 #ledPin = 19  # GPIO of the indicator LED
@@ -51,7 +50,7 @@ photobuttonPin = 18  # GPIO of the photo push button
 camera = picamera.PiCamera()
 camera.resolution = (1280,720)  # 1280,720 also works for some setups 2592, 1944
 camera.framerate = 8  # slower is necessary for high-resolution
-#camera.brightness = previewBrightness  # Turned up so the black isn't too dark
+camera.brightness = 57
 #camera.preview_alpha = 210  # Set transparency so we can see the countdown
 camera.hflip = True
 camera.vflip = True

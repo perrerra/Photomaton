@@ -62,6 +62,7 @@ def photoButtonPress(event):
     for i in range(3, 0, -1):
         # Draw text on the screen
         drawText(bigfont, str(i))
+        sleep(0.5)
 
     screen.fill(black)  # black screen
     for j in range(4):

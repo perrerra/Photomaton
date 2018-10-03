@@ -112,7 +112,7 @@ def takePhoto():
     if play_shutter_sound:
         shutter_sound.play()
 
-    camera.stop_preview()  
+    stopPreview()
     # Unflip the photo so it is correct when taken
     #camera.hflip = False
     takepic(path)
@@ -146,6 +146,9 @@ def startPreview():
     screen.fill(black)
     camera.preview_alpha = 254
 
+def stopPreview():    
+    camera.stop_preview()
+    camera.close()
 
 def photoButtonPress(event):
 
@@ -178,8 +181,7 @@ def safeClose():
     None
     """
 
-    camera.stop_preview()
-    camera.close()
+    stopPreview()
     GPIO.cleanup()
 
 pygame.init()

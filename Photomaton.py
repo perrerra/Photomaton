@@ -165,7 +165,7 @@ def photoButtonPress(event):
     minuterie()
     fname = takePhoto()
     loadpic(fname)
-    startPreview()
+    startPreview(camera)
 
 
 
@@ -206,7 +206,7 @@ camera.resolution = (1280,720)  # 1280,720 also works for some setups 2592, 1944
 camera.framerate = 8  # slower is necessary for high-resolution
 camera.brightness = previewBrightness  # Turned up so the black isn't too dark
 
-startPreview()
+startPreview(camera)
 
 
 # Turn off mouse

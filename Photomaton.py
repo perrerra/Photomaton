@@ -43,7 +43,7 @@ def safeClose():
 
 pygame.init()
 pygame.mixer.init()
-shutter_sound = pygame.mixer.Sound("/home/pi/Desktop/PiBooth/shutter_sound.wav")
+shutter_sound = pygame.mixer.Sound("/home/pi/Desktop/GIT/Photomaton/shutter.wav")
 
 size = width, height = 800, 600
 screen = pygame.display.set_mode(size, pygame.FULLSCREEN)

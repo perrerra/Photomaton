@@ -5,6 +5,8 @@ import RPi.GPIO as GPIO
 from time import sleep, strftime, gmtime
 #import os
 
+
+
 def photoButtonPress(event):
     sleep(0.05)
     if GPIO.input(photobuttonPin) != GPIO.LOW:
@@ -13,9 +15,9 @@ def photoButtonPress(event):
     print("trying to take picture")
     time_stamp = strftime("%Y_%m_%dT%H_%M_%S", gmtime())
     path = "/home/pi/Desktop/photobooth_photos/%s.jpg" % time_stamp
-    camera.hflip = False
+    # camera.hflip = False
     camera.capture(path)
-    camera.hflip = True
+    # camera.hflip = True
     print("picture taken")
 
 def safeClose():
@@ -39,7 +41,8 @@ def safeClose():
 
 pygame.init()
 pygame.mixer.init()
-
+size = width, height = 800, 600
+screen = pygame.display.set_mode(size, pygame.FULLSCREEN)
 # Pin configuration
 #ledPin = 19  # GPIO of the indicator LED
 #auxlightPin = 20  # GPIO of the AUX lighting output

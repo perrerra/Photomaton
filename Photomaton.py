@@ -8,7 +8,7 @@ from time import sleep, strftime, gmtime
 
 
 def photoButtonPress(event):
-    sleep(0.05)
+    sleep(0.005)
     if GPIO.input(photobuttonPin) != GPIO.LOW:
         print("fake button press")
         return

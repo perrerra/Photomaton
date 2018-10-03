@@ -6,7 +6,6 @@ import RPi.GPIO as GPIO
 from time import sleep, strftime, gmtime
 import os
 
-camera = None
 
 # Setup Parameters
 # Only change things here unless you want to dig into the program
@@ -113,7 +112,7 @@ def takePhoto():
     if play_shutter_sound:
         shutter_sound.play()
 
-    stopPreview()
+    stopPreview(camera)
     # Unflip the photo so it is correct when taken
     #camera.hflip = False
     takepic(path)
@@ -140,23 +139,19 @@ def outputToggle(pin, status, time=False):
         sleep(time)
     return status
 
-def startPreview():    
+def startPreview(cam):    
 
-    camera = picamera.PiCamera()
-    camera.resolution = (1280,720)  # 1280,720 also works for some setups 2592, 1944
-    camera.framerate = 8  # slower is necessary for high-resolution
-    camera.brightness = previewBrightness  # Turned up so the black isn't too dark
     camera.hflip = True
     camera.vflip = True
     camera.start_preview()
     screen.fill(black)
     camera.preview_alpha = 254
 
-def stopPreview():    
+def stopPreview(cam):    
     print("trying to stop preview")
-    camera.stop_preview()
+    cam.stop_preview()
     print("trying to stop camera")
-    camera.close()
+    cam.close()
     print("camera stopped")
 
 def photoButtonPress(event):
@@ -190,7 +185,7 @@ def safeClose():
     None
     """
 
-    stopPreview()
+    stopPreview(camera)
     GPIO.cleanup()
 
 pygame.init()
@@ -206,7 +201,10 @@ smfont = pygame.font.Font(None, 600)
 tinyfont = pygame.font.Font(None, 300)
 
 # Setup camera
-
+camera = picamera.PiCamera()
+camera.resolution = (1280,720)  # 1280,720 also works for some setups 2592, 1944
+camera.framerate = 8  # slower is necessary for high-resolution
+camera.brightness = previewBrightness  # Turned up so the black isn't too dark
 
 startPreview()
 

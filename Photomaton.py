@@ -147,9 +147,11 @@ def startPreview():
     camera.preview_alpha = 254
 
 def stopPreview():    
-    print("trying to stop preview and close camera")
+    print("trying to stop preview")
     camera.stop_preview()
+    print("trying to stop camera")
     camera.close()
+    print("camera stopped")
 
 def photoButtonPress(event):
     print("button pressed")

@@ -67,7 +67,7 @@ photobuttonPin = 18  # GPIO of the photo push button
 
 # Setup camera
 camera = picamera.PiCamera()
-camera.resolution = (1280,720)  # 1280,720 also works for some setups 2592, 1944
+camera.resolution = (800,600)  # 1280,720 also works for some setups 2592, 1944
 camera.framerate = 8  # slower is necessary for high-resolution
 camera.brightness = 57
 camera.start_preview()

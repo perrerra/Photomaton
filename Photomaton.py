@@ -22,16 +22,17 @@ def photoButtonPress(event):
     time_stamp = strftime("%Y_%m_%dT%H_%M_%S", gmtime())
     path = "/home/pi/Desktop/photobooth_photos/%s.jpg" % time_stamp
     # camera.hflip = False
-
+    camera.stop_preview()
     outputToggle(ledPin, True, time=1)
-    for j in range(8):
-        outputToggle(ledPin, False, time=0.0625)
-        outputToggle(ledPin, True, time=0.0625)
+    for j in range(4):
+        outputToggle(ledPin, False, time=0.125)
+        outputToggle(ledPin, True, time=0.125)
     
     camera.capture(path)
     outputToggle(ledPin, False)
     # shutter_sound.play()
     # camera.hflip = True
+    camera.start_preview()
     print("picture taken")
 
 def safeClose():
@@ -47,7 +48,7 @@ def safeClose():
     --------
     None
     """
-    outputToggle(ledPin, False)
+    # outputToggle(ledPin, False)
     # outputToggle(auxlightPin, False)
     camera.stop_preview()
     camera.close()

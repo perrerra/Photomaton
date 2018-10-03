@@ -100,6 +100,7 @@ bigfont = pygame.font.Font(None, 600)
 
 
 size = width, height = 800, 600
+black = 0, 0, 0
 screen = pygame.display.set_mode(size, pygame.FULLSCREEN)
 # Pin configuration
 ledPin = 17  # GPIO of the indicator LED

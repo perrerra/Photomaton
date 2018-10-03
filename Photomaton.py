@@ -18,7 +18,7 @@ def photoButtonPress(event):
     path = "/home/pi/Desktop/photobooth_photos/%s.jpg" % time_stamp
     # camera.hflip = False
     camera.capture(path)
-    shutter_sound.play()
+    # shutter_sound.play()
     # camera.hflip = True
     print("picture taken")
 
@@ -43,7 +43,7 @@ def safeClose():
 
 pygame.init()
 pygame.mixer.init()
-shutter_sound = pygame.mixer.Sound("/home/pi/Desktop/GIT/Photomaton/shutter.wav")
+# shutter_sound = pygame.mixer.Sound("/home/pi/Desktop/GIT/Photomaton/shutter.wav")
 
 size = width, height = 800, 600
 screen = pygame.display.set_mode(size, pygame.FULLSCREEN)
@@ -56,7 +56,7 @@ photobuttonPin = 18  # GPIO of the photo push button
 # Setup camera
 camera = picamera.PiCamera()
 camera.resolution = (1280,720)  # 1280,720 also works for some setups 2592, 1944
-camera.framerate = 8  # slower is necessary for high-resolution
+camera.framerate = 4  # slower is necessary for high-resolution
 camera.brightness = 57
 #camera.preview_alpha = 210  # Set transparency so we can see the countdown
 camera.hflip = False

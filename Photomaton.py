@@ -65,6 +65,8 @@ def photoButtonPress(event):
         sleep(0.5)
 
     screen.fill(black)  # black screen
+    pygame.display.update()
+    
     for j in range(4):
         outputToggle(ledPin, False, time=0.125)
         outputToggle(ledPin, True, time=0.125)

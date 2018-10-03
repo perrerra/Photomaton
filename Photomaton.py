@@ -13,19 +13,17 @@ def outputToggle(pin, status, time=False):
     return status
 
 def photoButtonPress(event):
-    # sleep(0.005)
-    # if GPIO.input(photobuttonPin) != GPIO.LOW:
-    #     print("fake button press")
-    #     return
-    camera.start_preview()
-    sleep(3)
+    sleep(0.005)
+    if GPIO.input(photobuttonPin) != GPIO.LOW:
+        print("fake button press")
+        return
+
     print("trying to take picture")
     time_stamp = strftime("%Y_%m_%dT%H_%M_%S", gmtime())
     path = "/home/pi/Desktop/photobooth_photos/%s.jpg" % time_stamp
     # camera.hflip = False
     
-    outputToggle(ledPin, True, time=1)
-    for j in range(4):
+    for j in range(6):
         outputToggle(ledPin, False, time=0.125)
         outputToggle(ledPin, True, time=0.125)
     
@@ -34,7 +32,6 @@ def photoButtonPress(event):
     # shutter_sound.play()
     # camera.hflip = True
     
-    camera.stop_preview()
     print("picture taken")
 
 def safeClose():
@@ -73,7 +70,7 @@ camera = picamera.PiCamera()
 camera.resolution = (1280,720)  # 1280,720 also works for some setups 2592, 1944
 camera.framerate = 8  # slower is necessary for high-resolution
 camera.brightness = 57
-
+camera.start_preview()
 camera.hflip = False
 camera.vflip = True
 

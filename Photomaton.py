@@ -36,6 +36,7 @@ def loadpic(imageName): # affiche imagename
 
 
 def minuterie():
+  print("starting countdown")
   camera.preview_alpha = 210  # Set transparency so we can see the countdown
   drawText(bigfont, "3")
   sleep(0.3)
@@ -103,8 +104,7 @@ def takepic(imageName):
     os.system(command)
 
 def takePhoto():
-
-
+    
     # Grab the capture
     time_stamp = strftime("%Y_%m_%dT%H_%M_%S", gmtime())
     path = "/home/pi/Desktop/photos/%s.jpg" % time_stamp
@@ -147,11 +147,12 @@ def startPreview():
     camera.preview_alpha = 254
 
 def stopPreview():    
+    print("trying to stop preview and close camera")
     camera.stop_preview()
     camera.close()
 
 def photoButtonPress(event):
-
+    print("button pressed")
     # Wait for 0.1 sec to be sure it's a person pressing the
     # button, not noise.
     sleep(0.05)

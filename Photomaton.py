@@ -61,8 +61,9 @@ def photoButtonPress(event):
     
     for i in range(3, 0, -1):
         # Draw text on the screen
-        drawText(bigfont, str(3))
+        drawText(bigfont, str(i))
 
+    screen.fill(black)  # black screen
     for j in range(4):
         outputToggle(ledPin, False, time=0.125)
         outputToggle(ledPin, True, time=0.125)

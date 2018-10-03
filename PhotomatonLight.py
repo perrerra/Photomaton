@@ -5,42 +5,6 @@ import RPi.GPIO as GPIO
 from time import sleep, strftime, gmtime
 #import os
 
-def drawText(font, textstr, clear_screen=True, color=(250, 10, 10)):
-    """
-    Draws the given string onto the pygame screen.
-
-    Parameters:
-    -----------
-    font : object
-        pygame font object
-    textstr: string
-        text to be written to the screen
-    clean_screan : boolean
-        determines if previously shown text should be cleared
-    color : tuple
-        RGB tuple of font color
-
-    Returns:
-    --------
-    None
-    """
-    if clear_screen:
-        screen.fill(black)  # black screen
-
-    # Render font
-    pltText = font.render(textstr, 1, color)
-
-    # Center text
-    textpos = pltText.get_rect()
-    textpos.centerx = screen.get_rect().centerx
-    textpos.centery = screen.get_rect().centery
-
-    # Blit onto screen
-    screen.blit(pltText, textpos)
-
-    # Update
-    pygame.display.update()
-
 def outputToggle(pin, status, time=False):
 
     GPIO.output(pin, status)
@@ -59,17 +23,13 @@ def photoButtonPress(event):
     path = "/home/pi/Desktop/photobooth_photos/%s.jpg" % time_stamp
     # camera.hflip = False
     
-    for i in range(3, 0, -1):
-        # Draw text on the screen
-        drawText(bigfont, str(3))
-
-    for j in range(4):
+    for j in range(6):
         outputToggle(ledPin, False, time=0.125)
         outputToggle(ledPin, True, time=0.125)
     
     camera.capture(path)
     outputToggle(ledPin, False)
-    shutter_sound.play()
+    # shutter_sound.play()
     # camera.hflip = True
     
     print("picture taken")
@@ -95,9 +55,7 @@ def safeClose():
 
 pygame.init()
 pygame.mixer.init()
-shutter_sound = pygame.mixer.Sound("/home/pi/Desktop/GIT/Photomaton/shutter.wav")
-bigfont = pygame.font.Font(None, 600)
-
+# shutter_sound = pygame.mixer.Sound("/home/pi/Desktop/GIT/Photomaton/shutter.wav")
 
 size = width, height = 800, 600
 screen = pygame.display.set_mode(size, pygame.FULLSCREEN)
@@ -112,7 +70,6 @@ camera = picamera.PiCamera()
 camera.resolution = (800,600)  # 1280,720 also works for some setups 2592, 1944
 camera.framerate = 8  # slower is necessary for high-resolution
 camera.brightness = 57
-camera.preview_alpha = 210  # Set transparency so we can see the countdown
 camera.start_preview()
 camera.hflip = False
 camera.vflip = True

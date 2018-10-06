@@ -107,7 +107,7 @@ def takePhoto():
     if play_shutter_sound:
         shutter_sound.play()
     takepic(path)
-    drawText(bigfont, "")
+    drawText(tinyfont, "...")
         # Take the photo
     #camera.capture(path)    
     return path

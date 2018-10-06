@@ -25,10 +25,10 @@ photo_count = 0
 gallery = []
 gallery_file = open(gallery_path, 'r') 
 
-picture_path = gallery_file.readline()
+picture_path = gallery_file.readline().replace('\n', ' ').replace('\r', '')
 while picture_path <> '':
     gallery.append(picture_path)
-    picture_path = gallery_file.readline()
+    picture_path = gallery_file.readline().replace('\n', ' ').replace('\r', '')
     pass
 
 photo_count = len(gallery)

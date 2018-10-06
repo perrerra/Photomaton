@@ -42,7 +42,8 @@ def loadpic(imageName): # affiche imagename
     screen.blit(background,(0,0),(0,0,width,height))
     pygame.display.flip()    
     
-def display_gallery(photo_cursor):
+def display_gallery():
+    global photo_cursor
     photo_cursor = photo_cursor + 1
     print("displaying photo")
     if photo_cursor >= photo_count:
@@ -133,6 +134,7 @@ def photoButtonPress(event):
     with open(gallery_path, 'a') as gallery_file_w:
         gallery_file_w.write(picture_path)
         gallery_file_w.write('\n')
+    global photo_count
     photo_count= photo_count + 1 
     diaporama = True
 
@@ -182,7 +184,7 @@ GPIO.add_event_detect(photobuttonPin, GPIO.FALLING,
 
 while 1:
     if diaporama:
-        display_gallery(photo_cursor)
+        display_gallery()
 
     for event in pygame.event.get():
         if event.type == pygame.QUIT:

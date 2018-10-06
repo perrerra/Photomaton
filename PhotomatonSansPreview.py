@@ -44,7 +44,7 @@ def loadpic(imageName): # affiche imagename
     
 def display_gallery(photo_cursor):
     photo_cursor = photo_cursor + 1
-    print("displaying photo numer %" % photo_cursor)
+    print("displaying photo")
     if photo_cursor >= photo_count:
         photo_cursor = 0
     loadpic(gallery[photo_cursor])

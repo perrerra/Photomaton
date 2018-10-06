@@ -129,7 +129,7 @@ def photoButtonPress(event):
 
     countdown()
     picture_path = takePhoto()
-    screen.fill(black)
+#   screen.fill(black)
     loadpic(picture_path)
     sleep(3)
     gallery.append(picture_path) 

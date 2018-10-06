@@ -123,7 +123,7 @@ def photoButtonPress(event):
     diaporama = False
     # Wait for 0.1 sec to be sure it's a person pressing the
     # button, not noise.
-    sleep(0.05)
+    sleep(0.1)
     if GPIO.input(photobuttonPin) != GPIO.LOW:
         return
 
@@ -178,10 +178,7 @@ GPIO.add_event_detect(photobuttonPin, GPIO.FALLING,
 # GPIO.add_event_detect(shutdownbuttonPin, GPIO.FALLING,
 #                       callback=shutdownButtonPress, bouncetime=1000)
 
-# outputToggle(ledPin, True)  # Turn on the camera "power" LED
-
-
-
+#outputToggle(ledPin, True)  # Turn on the camera "power" LED
 
 while 1:
     if diaporama:

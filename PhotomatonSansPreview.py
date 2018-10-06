@@ -120,6 +120,7 @@ def outputToggle(pin, status, time=False):
     
 	
 def photoButtonPress(event):
+    global diaporama
     diaporama = False
     # Wait for 0.1 sec to be sure it's a person pressing the
     # button, not noise.
@@ -133,10 +134,10 @@ def photoButtonPress(event):
     loadpic(picture_path)
     sleep(3)
     gallery.append(picture_path) 
-    with open(gallery_path, 'a') as gallery_file_w:
-        gallery_file_w.write(picture_path)
+    #with open(gallery_path, 'a') as gallery_file_w:
+     #   gallery_file_w.write(picture_path)
     global photo_count
-    photo_count= photo_count + 1 
+    photo_count= photo_count + 1     
     diaporama = True
 
 def safeClose():

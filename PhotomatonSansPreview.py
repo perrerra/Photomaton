@@ -37,10 +37,10 @@ def loadpic(imageName): # affiche imagename
     print("loading image: " + imageName)      
     background = pygame.image.load(imageName);
 #    sleep(3)
-#    background = pygame.transform.scale(background,(width,height))
-#    background.convert_alpha()
-#    screen.blit(background,(0,0),(0,0,width,height))
-#    pygame.display.flip()    
+    background = pygame.transform.scale(background,(width,height))
+    background.convert_alpha()
+    screen.blit(background,(0,0),(0,0,width,height))
+    pygame.display.flip()    
     
 def display_gallery(photo_cursor):
     photo_cursor = photo_cursor + 1
@@ -52,11 +52,11 @@ def display_gallery(photo_cursor):
 
 def countdown():
   drawText(bigfont, "3")
-  sleep(0.3)
+  sleep(1)
   drawText(bigfont, "2")
-  sleep(0.3)
+  sleep(2)
   drawText(bigfont, "1")
-  sleep(0.3)
+  sleep(3)
   drawText(tinyfont, "souriez !")  
 
 def drawText(font, textstr, clear_screen=True, color=(255, 255, 255)):
@@ -126,11 +126,12 @@ def photoButtonPress(event):
 
     countdown()
     picture_path = takePhoto()
-    loadpic(fname)
+    screen.fill(black)
+    loadpic(picture_path)
     sleep(3)
     gallery.append(picture_path) 
     with open(gallery_path, 'a') as gallery_file_w:
-        gallery_file_w.write(fname)
+        gallery_file_w.write(picture_path)
         gallery_file_w.write('\n')
     photo_count= photo_count + 1 
     diaporama = True
@@ -151,7 +152,7 @@ black = 0, 0, 0
 screen = pygame.display.set_mode(size, pygame.FULLSCREEN)
 bigfont = pygame.font.Font(None, 800)
 smfont = pygame.font.Font(None, 600)
-tinyfont = pygame.font.Font(None, 300)
+tinyfont = pygame.font.Font(None, 150)
 
 # Setup camera
 #camera = picamera.PiCamera()

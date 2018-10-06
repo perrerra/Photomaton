@@ -25,10 +25,10 @@ photo_count = 0
 gallery = []
 gallery_file = open(gallery_path, 'r') 
 
-picture_path = gallery_file.readline()
+picture_path = gallery_file.read(23)
 while picture_path <> '':
     gallery.append(picture_path)
-    picture_path = gallery_file.readline()
+    picture_path = gallery_file.read(23)
     pass
 
 photo_count = len(gallery)
@@ -134,7 +134,6 @@ def photoButtonPress(event):
     gallery.append(picture_path) 
     with open(gallery_path, 'a') as gallery_file_w:
         gallery_file_w.write(picture_path)
-        gallery_file_w.write('\n')
     global photo_count
     photo_count= photo_count + 1 
     diaporama = True

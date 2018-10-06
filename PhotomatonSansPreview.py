@@ -57,9 +57,9 @@ def countdown():
   drawText(bigfont, "3")
   sleep(1)
   drawText(bigfont, "2")
-  sleep(2)
+  sleep(1)
   drawText(bigfont, "1")
-  sleep(3)
+  sleep(1)
   drawText(tinyfont, "souriez !")  
 
 def drawText(font, textstr, clear_screen=True, color=(255, 255, 255)):
@@ -130,7 +130,7 @@ def photoButtonPress(event):
 
     countdown()
     picture_path = takePhoto()
-#   screen.fill(black)
+    screen.fill(black)
     loadpic(picture_path)
     sleep(3)
     gallery.append(picture_path) 

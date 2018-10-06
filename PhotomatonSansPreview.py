@@ -32,7 +32,7 @@ gallery = []
 #    pass
 
 
-gallery.append("/home/pi/Desktop/test.jpg")
+gallery.append("/home/pi/Desktop/photos/test.jpg")
 photo_count = len(gallery)
 
 def loadpic(imageName): # affiche imagename
@@ -107,10 +107,9 @@ def takePhoto():
     if play_shutter_sound:
         shutter_sound.play()
     takepic(path)
-
+    drawText(bigfont, "")
         # Take the photo
     #camera.capture(path)    
-
     return path
 
 def outputToggle(pin, status, time=False):
@@ -130,7 +129,6 @@ def photoButtonPress(event):
 
     countdown()
     picture_path = takePhoto()
-    screen.fill(black)
     loadpic(picture_path)
     sleep(3)
     gallery.append(picture_path) 

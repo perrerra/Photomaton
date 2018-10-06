@@ -49,6 +49,7 @@ def display_gallery():
     if photo_cursor >= photo_count:
         photo_cursor = 0
     loadpic(gallery[photo_cursor])
+    #loadpic("/home/pi/Desktop/photos/test.jpg")
     sleep(5)
 
 def countdown():

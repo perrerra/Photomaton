@@ -23,14 +23,16 @@ photo_cursor = -1
 photo_count = 0
 
 gallery = []
-gallery_file = open(gallery_path, 'r') 
+#gallery_file = open(gallery_path, 'r') 
 
-picture_path = gallery_file.read(23)
-while picture_path <> '':
-    gallery.append(picture_path)
-    picture_path = gallery_file.read(23)
-    pass
+#picture_path = gallery_file.read(23)
+#while picture_path <> '':
+#    gallery.append(picture_path)
+#    picture_path = gallery_file.read(23)
+#    pass
 
+
+gallery.append("/home/pi/Desktop/test.jpg")
 photo_count = len(gallery)
 
 def loadpic(imageName): # affiche imagename
